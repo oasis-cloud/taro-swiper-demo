@@ -7,6 +7,7 @@ const Index = () => {
   return <>
     <Textarea style={{border: '1px solid black'}}
               value={value}
+              controlled
               onInput={(e) => setValue(e.detail.value)}>
     </Textarea>
   </>
