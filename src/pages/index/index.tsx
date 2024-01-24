@@ -2,9 +2,6 @@ import React, {
   Children,
   forwardRef, FunctionComponent,
   ReactNode,
-  useEffect,
-  useImperativeHandle,
-  useRef,
   useState,
 } from 'react'
 import {
@@ -14,7 +11,6 @@ import {
   View,
 } from '@tarojs/components'
 import classNames from 'classnames'
-import {CommonEventFunction} from '@tarojs/components/types/common'
 
 export interface SwiperProps extends Omit<TaroSwiperProps, 'ref'> {
   width: number
