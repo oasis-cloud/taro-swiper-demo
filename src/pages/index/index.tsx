@@ -54,38 +54,9 @@ export const Swiper = forwardRef((props: Partial<SwiperProps>, ref) => {
     ...defaultProps,
     ...props,
   }
-  const [current, setCurrent] = useState(defaultValue)
-  const childrenCount = useRef(Children.toArray(children).length)
-  useEffect(() => {
-    // setCurrent(defaultValue)
-  }, [defaultValue])
+  const [current, ] = useState(defaultValue)
 
-  const handleOnChange: CommonEventFunction<
-    TaroSwiperProps.onChangeEventDetail
-  > = (value) => {
-    // setCurrent(value.detail.current)
-  }
-  useImperativeHandle(ref, () => ({
-    to: (value: number) => {
-      setCurrent(value)
-    },
-    next: () => {
-      if (loop) {
-        setCurrent((current + 1) % childrenCount.current)
-      } else {
-        setCurrent(current + 1 >= childrenCount.current ? current : current + 1)
-      }
-    },
-    prev: () => {
-      if (loop) {
-        let next = current - 1
-        next = next < 0 ? childrenCount.current + next : next
-        setCurrent(next % childrenCount.current)
-      } else {
-        setCurrent(current - 1 <= 0 ? 0 : current - 1)
-      }
-    },
-  }))
+
   return (
     <View
       className={classNames(classPrefix, className)}
@@ -107,10 +78,6 @@ export const Swiper = forwardRef((props: Partial<SwiperProps>, ref) => {
           autoplay={autoPlay}
           vertical={direction === 'vertical'}
           indicatorDots
-          onChange={(e) => {
-            handleOnChange(e)
-            props.onChange?.(e)
-          }}
           style={{
             width: '100%',
             height: '150px',
